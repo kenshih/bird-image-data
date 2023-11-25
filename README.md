@@ -10,6 +10,11 @@ cat data/house_finch.female.100.json | jq -r '.[10:20] | .[].link'
 python -m venv finchenv
 pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 pip install --upgrade pip
+# todo requirements.txt
+
+# dev
+source finchenv/bin/activate
+source secrets
 ```
 
 # resources
