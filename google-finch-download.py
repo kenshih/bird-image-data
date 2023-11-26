@@ -3,6 +3,8 @@ import json
 import os
 import subprocess
 import uuid
+import zipfile
+from datetime import datetime
 
 api_key = os.getenv('GOOGLE_API_KEY')
 cse_id="305333fdcdf3b4f00"
@@ -53,8 +55,23 @@ def download_images(results, output_dir):
    except subprocess.CalledProcessError:
       print(f"Failed to download {link}")
 
-# first download metadata and save in file
+def zip_directory(directory_path, zip_path):
+   # Create the zip file
+   with zipfile.ZipFile(zip_path, 'w') as zipf:
+       # Walk through the directory
+       for root, dirs, files in os.walk(directory_path):
+           for file in files:
+               # Create a full filepath
+               full_path = os.path.join(root, file)
+               # Add the file to the zip
+               zipf.write(full_path, arcname=os.path.relpath(full_path, directory_path))
+
+# 1. download metadata and save in file
 #download_metadata('data-meta/google-finch-metadata.json')
-download_images(
-  json.load(open('data-meta/google-finch-metadata.json')),
-  'data-images')
+# 2. download images from metadata file
+# download_images(
+#   json.load(open('data-meta/google-finch-metadata.json')),
+#   'data-images')
+# 3. zip images
+current_date = datetime.now().strftime('%Y-%m-%d')
+zip_directory('data-images', f'finch_images_{current_date}.zip')
