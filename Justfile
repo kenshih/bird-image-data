@@ -3,3 +3,6 @@ clean:
 
 run:
     python run.py
+
+zip:
+    zip downloads.zip downloads/*
