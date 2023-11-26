@@ -6,6 +6,11 @@ Create bird image data set in order to train image recognition models
 
 - used in https://www.kaggle.com/code/kestrelken/bird-3-female-finch-images
 
+# development
+
+```
+just run
+```
 # discovery/notes
 
 ```

@@ -3,3 +3,8 @@ secrets
 finchenv/
 # too much data
 data-images/
+data-archive/*
+downloads/*
+
+# python compiled files
+__pycache__/

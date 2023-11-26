@@ -66,12 +66,16 @@ def zip_directory(directory_path, zip_path):
                # Add the file to the zip
                zipf.write(full_path, arcname=os.path.relpath(full_path, directory_path))
 
-# 1. download metadata and save in file
-#download_metadata('data-meta/google-finch-metadata.json')
-# 2. download images from metadata file
-# download_images(
-#   json.load(open('data-meta/google-finch-metadata.json')),
-#   'data-images')
-# 3. zip images
-current_date = datetime.now().strftime('%Y-%m-%d')
-zip_directory('data-images', f'finch_images_{current_date}.zip')
+def main():
+   # 1. download metadata and save in file
+   #download_metadata('data-meta/google-finch-metadata.json')
+   # 2. download images from metadata file
+   # download_images(
+   #   json.load(open('data-meta/google-finch-metadata.json')),
+   #   'data-images')
+   # 3. zip images
+    current_date = datetime.now().strftime('%Y-%m-%d')
+    zip_directory('data-images', f'finch_images_{current_date}.zip')
+
+if __name__ == "__main__":
+    main()
